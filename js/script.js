@@ -2,6 +2,15 @@
 console.log("1/ Implémentez une fonction qui transforme un texte en camelCase.");
 
 /**
+ * Turn a string with an upper case
+ * @param {string} - the word to capitalized
+ * @return {string} - capitalized word
+ */
+function capitalize(word) {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
+/**
  * Get a text in CamelCase.
  * @param {string} text - a text.
  * @returns {string} - Get a text in CamelCase.
@@ -14,7 +23,16 @@ function transformCamelCase(text) {
     return words.join("");
 }
 
+function transformCamelCase2(text) {
+    return text
+        .toLowerCase()
+        .split(" ")
+        .map((w, i) => i === 0 ? w : capitalize(w))
+        .join("");
+}
+
 console.log(transformCamelCase("TEST pour voir le camelcase"));
+console.log(transformCamelCase2("TEST pour voir le camelcase"));
 
 // -----------------------------------
 // console.log("2/ Implémentez une fonction qui retroune le plus grand mot d'un texte.");
