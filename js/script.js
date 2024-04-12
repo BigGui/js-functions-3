@@ -2,6 +2,15 @@
 console.log("1/ Implémentez une fonction qui transforme un texte en camelCase.");
 
 /**
+ * Split text in words and return an array
+ * @param {string} text - The text to split 
+ * @returns {array} array of words
+ */
+function splitTextInWords(text) {
+    return text.match(/\w+/g);
+}
+
+/**
  * Turn a string with an upper case
  * @param {string} - the word to capitalized
  * @return {string} - capitalized word
@@ -16,7 +25,7 @@ function capitalize(word) {
  * @returns {string} - Get a text in CamelCase.
  */
 function transformCamelCase(text) {
-    let words = text.toLowerCase().split(" ");
+    let words = splitTextInWords(text.toLowerCase());
     for (let index = 1; index < words.length; index++) {
         words[index] = words[index][0].toUpperCase() + words[index].slice(1);
     }
@@ -33,9 +42,7 @@ function removeAccent(text) {
 }
 
 function transformCamelCase2(text) {
-    return removeAccent(text)
-        .toLowerCase()
-        .match(/\w+/g)
+    return splitTextInWords(removeAccent(text).toLowerCase())
         .map((w, i) => i === 0 ? w : capitalize(w))
         .join("");
 }
@@ -54,7 +61,7 @@ console.log("2/ Implémentez une fonction qui retroune le plus grand mot d'un te
  */
 function getLongestWord(text) {
     let longestWord;
-    for (const word of text.split(" ")) {
+    for (const word of splitTextInWords(text)) {
         if (longestWord === undefined || word.length > longestWord.length) {
             longestWord = word;
         }
@@ -62,7 +69,13 @@ function getLongestWord(text) {
     return longestWord;
 }
 
+function getLongestWord2(text) {
+    return splitTextInWords(text)
+        .reduce((a, b) => a.length > b.length ? a : b);
+}
+
 console.log(getLongestWord("Implémentez une fonction qui retroune le plus grand mot d'un texte"));
+console.log(getLongestWord2("une fonction qui converti un nombre de seconde en un tableau exprimant cette durée en secondes, minutes, heures, jours, semaines et années."));
 
 // -----------------------------------
 // console.log("3/ Implémentez une fonction qui converti un nombre de seconde en un tableau exprimant cette durée en secondes, minutes, heures, jours, semaines et années.");
