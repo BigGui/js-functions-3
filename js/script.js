@@ -78,14 +78,40 @@ console.log(getLongestWord("Implémentez une fonction qui retroune le plus grand
 console.log(getLongestWord2("une fonction qui converti un nombre de seconde en un tableau exprimant cette durée en secondes, minutes, heures, jours, semaines et années."));
 
 // -----------------------------------
-// console.log("3/ Implémentez une fonction qui converti un nombre de seconde en un tableau exprimant cette durée en secondes, minutes, heures, jours, semaines et années.");
+console.log("3/ Implémentez une fonction qui converti un nombre de seconde en un tableau exprimant cette durée en secondes, minutes, heures, jours, semaines et années.");
+function transformTime(timeInS) {
+    const years = Math.floor(timeInS / (60 * 60 * 24 * 365));
+    const restofYear = timeInS % (60 * 60 * 24 * 365);
 
-// console.log();
+    const weeks = Math.floor(restofYear / (60 * 60 * 24 * 7));
+    const restOfWeek = restofYear % (60 * 60 * 24 * 7);
+
+    const days = Math.floor(restOfWeek / (60 * 60 * 24));
+    const restOfDay = restOfWeek % (60 * 60 * 24);
+    return [
+        years,
+        weeks,
+        days
+    ];
+}
+
+function transformTime2(seconds) {
+    const dividers = [60, 60, 24, 7, 52];
+    const duration = [seconds];
+    dividers.forEach(function(divider, i) {
+        duration.push(Math.floor(duration[i] / divider));
+        duration[i] %= divider;
+    });
+
+    console.log(dividers);
+    return duration;
+
+}
+console.log(transformTime2(315362222));
 
 // -----------------------------------
-// console.log("4/ Implémentez une fonction qui prend en paramètre un tableau retourné par la fonction précédente et retourne la chaîne de caractère correspondante.");
-
-// console.log();
+console.log("4/ Implémentez une fonction qui prend en paramètre un tableau retourné par la fonction précédente et retourne la chaîne de caractère correspondante.");
+console.log();
 
 // -----------------------------------
 // console.log("5/ Implémentez une fonction qui compte dans le texte en premier paramètre, le nombre d'occurence de la lettre en second paramètre.");
