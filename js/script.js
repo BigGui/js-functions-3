@@ -23,19 +23,30 @@ function transformCamelCase(text) {
     return words.join("");
 }
 
+/**
+ * Remove accents from the given text
+ * @param {string} text - Original text
+ * @returns {string} The original text without accent
+ */
+function removeAccent(text) {
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
 function transformCamelCase2(text) {
-    return text
+    return removeAccent(text)
         .toLowerCase()
-        .split(" ")
+        .match(/\w+/g)
         .map((w, i) => i === 0 ? w : capitalize(w))
         .join("");
 }
 
 console.log(transformCamelCase("TEST pour voir le camelcase"));
 console.log(transformCamelCase2("TEST pour voir le camelcase"));
+console.log(transformCamelCase2("à QUOI bon-étreindre/ cEs draps ébouri%ffés"));
 
 // -----------------------------------
 // console.log("2/ Implémentez une fonction qui retroune le plus grand mot d'un texte.");
+
 
 // console.log();
 
