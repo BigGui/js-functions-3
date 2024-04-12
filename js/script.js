@@ -45,10 +45,24 @@ console.log(transformCamelCase2("TEST pour voir le camelcase"));
 console.log(transformCamelCase2("à QUOI bon-étreindre/ cEs draps ébouri%ffés"));
 
 // -----------------------------------
-// console.log("2/ Implémentez une fonction qui retroune le plus grand mot d'un texte.");
+console.log("2/ Implémentez une fonction qui retroune le plus grand mot d'un texte.");
 
+/**
+ * Gets the longest word of a text
+ * @param {string} text - text to analyse
+ * @returns {string} the longest word from the text
+ */
+function getLongestWord(text) {
+    let longestWord;
+    for (const word of text.split(" ")) {
+        if (longestWord === undefined || word.length > longestWord.length) {
+            longestWord = word;
+        }
+    }
+    return longestWord;
+}
 
-// console.log();
+console.log(getLongestWord("Implémentez une fonction qui retroune le plus grand mot d'un texte"));
 
 // -----------------------------------
 // console.log("3/ Implémentez une fonction qui converti un nombre de seconde en un tableau exprimant cette durée en secondes, minutes, heures, jours, semaines et années.");
